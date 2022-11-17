@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 (function () {
     var tri = {
         menu: document.createElement("div"),
@@ -172,3 +173,4 @@ html, html:hover, #tri-menu, #tri-menu > *, #tri-menu > *:hover {
     };
     tri.init();
 })();
+/* jshint ignore:end */
