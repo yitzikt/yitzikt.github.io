@@ -12,15 +12,15 @@
     }
     const href_list = [
         {
-            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdIncluded=226070&contactLabelIdExcluded=377538&pageSize=500&sort=enddate_desc',
+            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdIncluded=226070&contactLabelIdExcluded=377538-412758&pageSize=500&sort=enddate_desc',
             title: `Step 1/3: Kids with 'GA Medicaid primary' but not a 'GA Medicaid secondary' label`
         },
         {
-            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdExcluded=226070&contactLabelIdIncluded=377538&pageSize=500&sort=enddate_desc',
+            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdExcluded=226070-412758&contactLabelIdIncluded=377538&pageSize=500&sort=enddate_desc',
             title: `Step 2/3: Kids with 'GA Medicaid secondary' but not a 'GA Medicaid primary' label`
         },
         {
-            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdIncluded=226070-377538&pageSize=500&sort=enddate_desc',
+            hash: 'billingmanager/authorizations/?validDays=90&contactLabelIdIncluded=226070-377538&contactLabelIdExcluded=412758&pageSize=500&sort=enddate_desc',
             title: `Step 3/3: Kids with both 'GA Medicaid secondary' and 'GA Medicaid primary' labels`
         },
     ];
