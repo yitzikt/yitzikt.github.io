@@ -1,4 +1,3 @@
-
 (async function () {
     "use strict";
     function download(content, fileName, contentType) {
@@ -19,11 +18,10 @@
         return result;
     }());
 
-
-    const myHeaders = new Headers();
-    myHeaders.append("x-csrf-token", myCookies['csrf-token']);
-    myHeaders.append("content-type", "application/json; charset=UTF-8");
-
+    const myHeaders = new Headers({
+        "x-csrf-token": myCookies['csrf-token'],
+        "content-type": "application/json; charset=UTF-8"
+    });
 
     async function serviceNote(code) {
         const requestOptionsGet = {
@@ -43,8 +41,8 @@
     async function fetchServiceCodeList() {
         let page = 1;
         const pages = [];
-        while(true){
-            const items = await (async function (){
+        while (true) {
+            const items = await (async function () {
                 "use strict";
                 const postData = {
                     "excludeFromSearch": "<data><item>contactlabel</item></data>",
@@ -110,7 +108,7 @@
                 return await res.json();
             }());
             page++;
-            if(!items.items.length){
+            if (!items.items.length) {
                 break;
             }
             pages.push(...items.items);
@@ -143,6 +141,4 @@
     } catch (e) {
         console.error(e);
     }
-
-
 }());
