@@ -138,6 +138,7 @@
         const companyListTemp = [];
 
         const companyID = document.querySelector('.company-name.search-name-link-container.ng-star-inserted[data-zoominfo-id]').getAttribute('data-zoominfo-id');
+        // eslint-disable-next-line for-direction
         for (let i = 1; i > 0; i++) {
             let peopleData = await zoomFetch('https://app.zoominfo.com/anura/zoominfo/hPeopleSearch', hPeopleSearchPayload(companyID, i));
             if (!peopleData.data.length) {

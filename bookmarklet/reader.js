@@ -2,7 +2,7 @@
     const style = document.createElement('style');
     style.innerText = `
         body{
-            width: 50%;
+            max-width: 900px;
             text-align: center;
         }
 
