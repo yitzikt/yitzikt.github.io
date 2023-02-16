@@ -124,7 +124,8 @@
                 Id: code.Id,
                 Code: code.Code,
                 Description: code.Description,
-                templates: noteTemplates.map(note => note.name).join('; ')
+                'templates Required': noteTemplates.filter(note => note.dependency === 2).map(note => note.name).join('; '),
+                'templates Optional': noteTemplates.filter(note => note.dependency === 1).map(note => note.name).join('; ')
             }
         }));
 
