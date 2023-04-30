@@ -137,7 +137,6 @@
         ].join('\r\n')
 
         download(csv, 'servicecodes.csv', 'text/plain');
-        // download(JSON.stringify(noteTemplates), 'servicecodes.json', 'text/plain');
     } catch (e) {
         console.error(e);
     }
