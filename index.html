@@ -602,7 +602,7 @@
         let currentCard = localStorage.getItem('flashcardIndex') ? parseInt(localStorage.getItem('flashcardIndex')) : 0;
 
         function updateCard() {
-            document.getElementById('question').textContent = flashcards[currentCard].question;
+            document.getElementById('question').textContent = `${currentCard+1}: ${flashcards[currentCard].question}`;
             document.getElementById('answer').textContent = flashcards[currentCard].answer;
             document.getElementById('answer').style.display = 'none';
         }
