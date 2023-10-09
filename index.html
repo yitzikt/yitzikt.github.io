@@ -596,7 +596,7 @@
         ]
             ;
 
-        let currentCard = 0;
+        let currentCard = localStorage.getItem('flashcardIndex') ? parseInt(localStorage.getItem('flashcardIndex')) : 0;
 
         function updateCard() {
             document.getElementById('question').textContent = flashcards[currentCard].question;
@@ -611,11 +611,13 @@
         function nextCard() {
             currentCard = (currentCard + 1) % flashcards.length;
             updateCard();
+            saveIndexToLocalStorage();
         }
 
         function prevCard() {
             currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
             updateCard();
+            saveIndexToLocalStorage();
         }
 
         function skipTo() {
@@ -623,9 +625,14 @@
             if (skipIndex >= 0 && skipIndex < flashcards.length) {
                 currentCard = skipIndex;
                 updateCard();
+                saveIndexToLocalStorage();
             } else {
                 alert("Invalid index. Please enter a valid index.");
             }
+        }
+
+        function saveIndexToLocalStorage() {
+            localStorage.setItem('flashcardIndex', currentCard);
         }
 
         // Initial load
