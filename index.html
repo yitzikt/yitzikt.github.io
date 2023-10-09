@@ -41,6 +41,10 @@
         <button onclick="showAnswer()">Show Answer</button>
         <button onclick="prevCard()">Previous</button>
         <button onclick="nextCard()">Next</button>
+        <br>
+        <label for="skipIndex">Skip to Question:</label>
+        <input type="number" id="skipIndex" min="1" max="${flashcards.length}" value="1">
+        <button onclick="skipTo()">Skip</button>
     </div>
 
     <script>
@@ -612,6 +616,16 @@
         function prevCard() {
             currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
             updateCard();
+        }
+
+        function skipTo() {
+            const skipIndex = parseInt(document.getElementById('skipIndex').value) - 1;
+            if (skipIndex >= 0 && skipIndex < flashcards.length) {
+                currentCard = skipIndex;
+                updateCard();
+            } else {
+                alert("Invalid index. Please enter a valid index.");
+            }
         }
 
         // Initial load
