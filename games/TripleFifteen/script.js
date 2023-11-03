@@ -5,6 +5,12 @@ document.querySelectorAll('.cell').forEach(cell => {
     cell.addEventListener('click', function () {
         // Ignore if the cell is blank (has no dataset value)
         if (!this.dataset.value) return;
+        // clicking the selected should deselect it
+        if(this.classList.contains('selected')){
+            this.classList.remove('selected');
+            selectedCells = [];
+            return;
+        }
         //  checking if move is valid
         if (selectedCells.length === 1) {
             const { row: firstRow, column: firstColumn, value: firstValue } = selectedCells[0].dataset;
