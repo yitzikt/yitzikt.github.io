@@ -57,13 +57,21 @@ document.querySelectorAll('.cell').forEach(cell => {
 
                 selectedCells.forEach(cell => cell.classList.remove('selected'));
                 selectedCells = [];
-
+                highlight15();
                 checkForWin();
             }, 300);  // Duration of the transition in the CSS
         }
     });
 });
 
+
+function highlight15(){
+    cells.forEach(cell => {
+        if(Number(cell.dataset.value) === 15){
+            cell.classList.add('fifteen');
+        }
+    })
+}
 
 function checkForWin() {
     const values = Array.from(cells).map(cell => parseInt(cell.dataset.value, 10) || 0);
@@ -109,6 +117,7 @@ function resetGame() {
         cell.textContent = randomNums[index];
         cell.dataset.value = randomNums[index];
         cell.classList.remove('selected');
+        cell.classList.remove('fifteen');
         selectedCells = [];
     });
 
