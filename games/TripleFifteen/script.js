@@ -1,12 +1,13 @@
 let selectedCells = [];
 const cells = document.body.querySelectorAll('.cell');
+const moveStack = [];
 
 document.querySelectorAll('.cell').forEach(cell => {
     cell.addEventListener('click', function () {
         // Ignore if the cell is blank (has no dataset value)
         if (!this.dataset.value) return;
         // clicking the selected should deselect it
-        if(this.classList.contains('selected')){
+        if (this.classList.contains('selected')) {
             this.classList.remove('selected');
             selectedCells = [];
             return;
@@ -47,6 +48,10 @@ document.querySelectorAll('.cell').forEach(cell => {
             const translateY = rectFirst.top - rectSecond.top;
 
             secondCell.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            moveStack.push({
+                cells: selectedCells.slice(),
+                values: [firstValue, secondValue],
+            });
 
             setTimeout(() => {
                 firstCell.dataset.value = sum;
@@ -64,10 +69,29 @@ document.querySelectorAll('.cell').forEach(cell => {
     });
 });
 
+function undoMove() {
+    if (moveStack.length > 0) {
+        const lastMove = moveStack.pop();
 
-function highlight15(){
+        lastMove.cells.forEach(cell => cell.classList.remove('selected'));
+        lastMove.cells[0].dataset.value = lastMove.values[0];
+        lastMove.cells[0].textContent = lastMove.values[0];
+        lastMove.cells[1].dataset.value = lastMove.values[1];
+        lastMove.cells[1].textContent = lastMove.values[1];
+        lastMove.cells[1].style.transform = ''; // Reset the transform property to clear the animation
+
+        highlight15();
+        checkForWin();
+    }
+}
+
+const undoButton = document.getElementById('undoButton'); // Replace 'undoButton' with the actual ID of your undo button
+undoButton.addEventListener('click', undoMove);
+
+
+function highlight15() {
     cells.forEach(cell => {
-        if(Number(cell.dataset.value) === 15){
+        if (Number(cell.dataset.value) === 15) {
             cell.classList.add('fifteen');
         }
     })
