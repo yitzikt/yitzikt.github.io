@@ -94,7 +94,7 @@ function checkForWin() {
                 break;
             }
         }
-        resetGame();
+        // resetGame();
     }
 }
 
