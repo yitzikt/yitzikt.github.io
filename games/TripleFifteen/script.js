@@ -73,7 +73,7 @@ function undoMove() {
     if (moveStack.length > 0) {
         const lastMove = moveStack.pop();
 
-        lastMove.cells.forEach(cell => cell.classList.remove('selected'));
+        lastMove.cells.forEach(cell => cell.classList.remove('selected', 'fifteen'));
         lastMove.cells[0].dataset.value = lastMove.values[0];
         lastMove.cells[0].textContent = lastMove.values[0];
         lastMove.cells[1].dataset.value = lastMove.values[1];
@@ -133,6 +133,7 @@ function generateRandomArray(size) {
 }
 
 function resetGame() {
+    moveStack.length = 0;
     const randomNums = generateRandomArray(9);
     // const randomNums = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     // const randomNums = [1, 2, 3, 4, 7, 6, 5, 8, 9];
