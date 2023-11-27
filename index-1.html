@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #flashcard {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        button {
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <p>made with love from Yitzy</p>
+
+    <div id="flashcard">
+        <h2 id="question">Question</h2>
+        <h3 id="answer" style="display: none;">Answer</h3>
+        <button onclick="showAnswer()">Show Answer</button>
+        <button onclick="prevCard()">Previous</button>
+        <button onclick="nextCard()">Next</button>
+        <br>
+        <label for="skipIndex">Skip to Question:</label>
+        <input type="number" id="skipIndex" min="1" max="${flashcards.length}" value="1">
+        <button onclick="skipTo()">Skip</button>
+    </div>
+
+    <script>
+        const flashcards = [
+            {
+                "question": "Prioritizing patients is known as what?",
+                "answer": "triage"
+            },
+            {
+                "question": "When patient information is shared without consent?",
+                "answer": "breach of confidentiality"
+            },
+            {
+                "question": "What are the accessory organs of the digestive system?",
+                "answer": "liver and gallbladder"
+            },
+            {
+                "question": "Scheduling similar visits at the same time is known as what?",
+                "answer": "cluster scheduling"
+            },
+            {
+                "question": "No appointments needed, first come first serve - open hour scheduling",
+                "answer": "open hour scheduling"
+            },
+            {
+                "question": "CBC is sent to what department?",
+                "answer": "hematology"
+            },
+            {
+                "question": "Machine that separates liquid -",
+                "answer": "centrifuge"
+            },
+            {
+                "question": "A specialist in tissue -",
+                "answer": "histologist"
+            },
+            {
+                "question": "In case of an emergency the office does what to ensure employees know their roles?",
+                "answer": "have a written explanation of employees responsibilities"
+            },
+            {
+                "question": "When an employee gets hurt at work -",
+                "answer": "fill out an incident report"
+            },
+            {
+                "question": "Ethics is...?",
+                "answer": "moral principles, how we should behave, and rules of conduct"
+            },
+            {
+                "question": "When a court/judge requests documents for a trial -",
+                "answer": "subpoena"
+            },
+            {
+                "question": "Registration section of a patient’s chart -",
+                "answer": "demographic information"
+            },
+            {
+                "question": "Ensures that employees are protected from exposure to body fluids and pathogens - ",
+                "answer": "OSHA - know what OSHA stands for"
+            },
+            {
+                "question": "PPE for vomiting blood -",
+                "answer": "gown, gloves, mask, and a face shield"
+            },
+            {
+                "question": "What could cause revocation of a provider’s license?",
+                "answer": "inappropriate patient contact"
+            },
+            {
+                "question": "Follow-ups to a previous visit are called a what?",
+                "answer": "progress notes"
+            },
+            {
+                "question": "Documenting an intermediate diagnosis after a patient’s exam and history -",
+                "answer": "a clinical diagnosis"
+            },
+            {
+                "question": "Under HIPAA, who can view a patient’s chart/medical record?",
+                "answer": "any provider who is involved in direct patient care"
+            },
+            {
+                "question": "A patient has alcoholic drinks, what section does that go under in their chart?",
+                "answer": "social history"
+            },
+            {
+                "question": "Res ipsa loquitur -",
+                "answer": "the thing speaks for itself"
+            },
+            {
+                "question": "When an MA witnesses a patient’s signature, what are they attesting to?",
+                "answer": "the patient’s identity and signature"
+            },
+            {
+                "question": "Temperature is 100F, what is that labeled?",
+                "answer": "low-grade fever"
+            },
+            {
+                "question": "What chamber pumps oxygenated blood to the rest of the body?",
+                "answer": "the left ventricle"
+            },
+            {
+                "question": "When a facility is accredited, how is this good for the patients and facility?",
+                "answer": "it shows the community that the facility has met and exceeded expectations"
+            },
+            {
+                "question": "Which hormone is responsible for fight or flight?",
+                "answer": "cortisol"
+            },
+            {
+                "question": "What document would contain Dx code, procedure code, etc?",
+                "answer": "the encounter sheet"
+            },
+            {
+                "question": "What stage in infection does the patient note malaise?",
+                "answer": "prodromal"
+            },
+            {
+                "question": "What is the best place for a patient interview?",
+                "answer": "over the phone"
+            },
+            {
+                "question": "What is considered to not be a good interview?",
+                "answer": "open ended questions"
+            },
+            {
+                "question": "What is an example of a close ended question?",
+                "answer": "describe your pain 1 to 10"
+            },
+            {
+                "question": "When did symptoms start and rate your pain -",
+                "answer": "a close ended question"
+            },
+            {
+                "question": "When a patient is coming for a mammogram, how do you tell them to prep?",
+                "answer": "no deodorant, powders, or lotions"
+            },
+            {
+                "question": "Which of the following is considered a parasitic infection?",
+                "answer": "malaria"
+            },
+            {
+                "question": "Aspirin and asudamenafin are examples of what?",
+                "answer": "analgesic and antipyretic"
+            },
+            {
+                "question": "Demerol 75 mg every 4 hours as needed?",
+                "answer": "PRN"
+            },
+            {
+                "question": "The unit in the hospital for musculoskeletal disorders?",
+                "answer": "rheumatology"
+            },
+            {
+                "question": "MSDS (manufacturer safety data sheet) includes what?",
+                "answer": "product manufacturing conditions"
+            },
+            {
+                "question": "The physician prescribed buccal medication, where does it go?",
+                "answer": "place the med between the teeth and cheek"
+            },
+            {
+                "question": "All pathogens are...?",
+                "answer": "microbes that can cause disease"
+            },
+            {
+                "question": "All prescriptions for controlled substances require...?",
+                "answer": "a DEA number and a physician’s signature"
+            },
+            {
+                "question": "When using a number 10 envelope, where should the address be placed?",
+                "answer": "10 lines down from the top, and four inches from the left edge"
+            },
+            {
+                "question": "What drug prevents the action of another drug?",
+                "answer": "an antagonist"
+            },
+            {
+                "question": "Co-insurance is calculated based on a...?",
+                "answer": "capitation rate"
+            },
+            {
+                "question": "Muscles that act on the knee joint exhibit two actions - flexion and extension",
+                "answer": "flexion and extension"
+            },
+            {
+                "question": "A structure that is composed of two or more tissue types?",
+                "answer": "an organ"
+            },
+            {
+                "question": "Cellular respiration is a function of the...?",
+                "answer": "mitochondria"
+            },
+            {
+                "question": "The smallest structural unit of the nervous system?",
+                "answer": "a neuron"
+            },
+            {
+                "question": "A patient comes into the office with chest pain and shortness of breath, what position do you put them in?",
+                "answer": "Faller’s (45 or 90 degrees)"
+            },
+            {
+                "question": "The primary function of the nervous system is...?",
+                "answer": "to detect changes in the internal and external environment and respond appropriately"
+            },
+            {
+                "question": "Mr. Smith is suffering from enlargement of the bones, as well as his hands and feet, what is cousin this?",
+                "answer": "acromegaly"
+            },
+            {
+                "question": "The function unit of the kidney is the...?",
+                "answer": "the nephron"
+            },
+            {
+                "question": "What type of gloves can be decontaminated and reused?",
+                "answer": "utility gloves"
+            },
+            {
+                "question": "There are two types of civil actions, the first lack of informed consent and...?",
+                "answer": "violation of standard of care"
+            },
+            {
+                "question": "Doctor Jones and Brown share a business, what is this called?",
+                "answer": "a partnership"
+            },
+            {
+                "question": "A provider withdraws from a care of a patient without notice, what is this called?",
+                "answer": "abandonment"
+            },
+            {
+                "question": "Which agency regulates the Controlled Substance Act?",
+                "answer": "the DEA"
+            },
+            {
+                "question": "Defamation through spoken statements is called?",
+                "answer": "slander"
+            },
+            {
+                "question": "Insulin syringes are calibrated in...?",
+                "answer": "units"
+            },
+            {
+                "question": "What is not true regarding HIPAA laws?",
+                "answer": "few boundaries are set in the use and release of health records"
+            },
+            {
+                "question": "PHI stands for...?",
+                "answer": "protected health information"
+            },
+            {
+                "question": "Which situation would an MA’s witness signature be required?",
+                "answer": "on an informed consent"
+            },
+            {
+                "question": "The privacy rule gives patients the right to...?",
+                "answer": "access their medical record"
+            },
+            {
+                "question": "A patient has an oral temperature of 108F, what is the medical term?",
+                "answer": "pyrexia"
+            },
+            {
+                "question": "Hand antisepsis requires the use of...?",
+                "answer": "antimicrobial soap"
+            },
+            {
+                "question": "Which of the following precautions require special air handling and ventilation?",
+                "answer": "airborne"
+            },
+            {
+                "question": "Which is correct regarding contact transmissions?",
+                "answer": "it involves contaminated instruments, needles, or hands that were not washed"
+            },
+            {
+                "question": "Important information a patient should know about immunizations...?",
+                "answer": "they are prophylaxis against deadly diseases"
+            },
+            {
+                "question": "What is the process to wash and remove blood and tissue from medical instruments?",
+                "answer": "sanitization"
+            },
+            {
+                "question": "How to change kgs to lbs?",
+                "answer": "multiply by 2.2"
+            },
+            {
+                "question": "When taking a patient’s medical history for TB, what PPE will be worn?",
+                "answer": "a mask"
+            },
+            {
+                "question": "Most exposures to HIV in healthcare settings are the result of...?",
+                "answer": "accidental needle sticks"
+            },
+            {
+                "question": "The 4 classic symptoms of inflammation are...?",
+                "answer": "edema, erythema, pain, and heat"
+            },
+            {
+                "question": "Tympanic temperature is measured where?",
+                "answer": "the ear"
+            },
+            {
+                "question": "The pulse site used to measure blood pressure?",
+                "answer": "brachial"
+            },
+            {
+                "question": "What is the correct way to measure pulse pressure?",
+                "answer": "systolic minus diastolic"
+            },
+            {
+                "question": "A patient is given a prescription that says take BID, what does it mean?",
+                "answer": "twice a day"
+            },
+            {
+                "question": "What procedures can be performed by the MA?",
+                "answer": "intramuscular injections"
+            },
+            {
+                "question": "Post-prandial means what?",
+                "answer": "after a meal"
+            },
+            {
+                "question": "A round raised skin lesion that itches from allergies is a what?",
+                "answer": "a wheal"
+            },
+            {
+                "question": "The patient information sheet contains...?",
+                "answer": "the past medical history of the patient"
+            },
+            {
+                "question": "What drug administration route is the most appropriate for a patient who is nauseous and vomiting?",
+                "answer": "rectal"
+            },
+            {
+                "question": "What is the primary purpose of wearing gloves during phlebotomy precludes?",
+                "answer": "to keep you from exposure to the patient’s blood"
+            },
+            {
+                "question": "What is the location to check the pulse if someone is unconscious and not breathing?",
+                "answer": "carotid"
+            },
+            {
+                "question": "The act of listening for sounds made by internal organs is...?",
+                "answer": "auscultation"
+            },
+            {
+                "question": "When a blood pressure cuff is deflated what is the first sound heard?",
+                "answer": "systolic pressure"
+            },
+            {
+                "question": "The body organ targeted by HBV?",
+                "answer": "liver"
+            },
+            {
+                "question": "What part of the brain is responsible for temperature regulation?",
+                "answer": "the hypothalamus"
+            },
+            {
+                "question": "What mode of infection transmission occurs from touching contaminated linens?",
+                "answer": "direct contact"
+            },
+            {
+                "question": "What is the most common means of transmitting pathogens?",
+                "answer": "touching"
+            },
+            {
+                "question": "When a patient fails to show up for their appointment, where is that recorded?",
+                "answer": "in the patient's chart"
+            },
+            {
+                "question": "Notifiable infections must be reported to...?",
+                "answer": "the CDC"
+            },
+            {
+                "question": "A quantitative test is one that...?",
+                "answer": "tests for the presence and amount of substance in a sample"
+            },
+            {
+                "question": "What is the interval between exposure to infection and the appearance of first symptoms?",
+                "answer": "incubation period"
+            },
+            {
+                "question": "The complete destruction of all microbial life -",
+                "answer": "sterilization"
+            },
+            {
+                "question": "A patient is having a seizure, what are the steps for you to take for you to protect the patient?",
+                "answer": "loosen clothing around the neck"
+            },
+            {
+                "question": "Most specialists are paid by managed care organizations using which methods?",
+                "answer": "capitation"
+            },
+            {
+                "question": "Which is classified as abnormally rapid, deep, or labored breathing?",
+                "answer": "tachypnea"
+            },
+            {
+                "question": "The monthly rent of the building where the medical office is handled by which department?",
+                "answer": "accounts payable"
+            },
+            {
+                "question": "What drug enhances the effect of another drug?",
+                "answer": "synergistic"
+            },
+            {
+                "question": "When giving an IM injection in the butt, what muscle does the medicine go in?",
+                "answer": "gluteus maximus"
+            },
+            {
+                "question": "A baby’s pulse and respiration are..?",
+                "answer": "faster than an adults"
+            },
+            {
+                "question": "When the body has had adequate rest and no food for at least 12 hours it is said to be in?",
+                "answer": "basal state"
+            },
+            {
+                "question": "What organ’s main function is to eliminate excess water and waste?",
+                "answer": "kidneys"
+            },
+            {
+                "question": "A murmur is an abnormal sound that may indicate what?",
+                "answer": "valvular heart disease"
+            },
+            {
+                "question": "When a person stays in the same position all the time, pressure causes skin to become weakened and what?",
+                "answer": "necrotic"
+            },
+            {
+                "question": "A patient’s weight should be listed in the chart to the nearest what?",
+                "answer": "quarter pound"
+            },
+            {
+                "question": "Which blood pressure reading would be considered stage one hypertension?",
+                "answer": "148/96"
+            },
+            {
+                "question": "A normal resting heart rate for the average adult is what?",
+                "answer": "60 to 100"
+            },
+            {
+                "question": "What is the function of the large intestine?",
+                "answer": "to absorb water"
+            },
+            {
+                "question": "The normal volume of urine produced by an adult in 24 hours does not exceed what?",
+                "answer": "2000 mLs"
+            },
+            {
+                "question": "A 24 hour specimen would be an example of a what?",
+                "answer": "a timed specimen"
+            },
+            {
+                "question": "The right to know law primarily deals with, what?",
+                "answer": "exposure to pathogens"
+            },
+            {
+                "question": "SOAP is an acronym that stands for what?",
+                "answer": "subjective, objective, assessment, and planning"
+            },
+            {
+                "question": "The ability to identify someone else’s feelings?",
+                "answer": "empathy"
+            },
+            {
+                "question": "Which of the following is known as swimmer’s ear?",
+                "answer": "otitis externa"
+            },
+            {
+                "question": "The hormone tested for pregnancy is what?",
+                "answer": "HCG"
+            },
+            {
+                "question": "A fluctuated fever that returns to or goes below baseline and then increases again is known as what?",
+                "answer": "intermittent"
+            },
+            {
+                "question": "What is the color of the skin of someone who does not take in sufficient oxygen?",
+                "answer": "blueish"
+            },
+            {
+                "question": "What is an educational topic for elderly patients to not transmit disease?",
+                "answer": "flu and pneumonia vaccinations"
+            },
+            {
+                "question": "Two employees discussing a patient’s diagnosis in an elevator is a violation of what?",
+                "answer": "patient privacy"
+            },
+            {
+                "question": "Someone calls the office to get results for their wife, what does the MA say/do?",
+                "answer": "check to see if he is allowed to get the results"
+            },
+            {
+                "question": "The main purpose of PPE is what?",
+                "answer": "provides the employee a barrier against infection"
+            },
+            {
+                "question": "Hypotension is defined as what?",
+                "answer": "systolic below 90, and diastolic below 60"
+            },
+            {
+                "question": "The acronym used to remember the actions used when using a fire extinguisher?",
+                "answer": "RACE"
+            },
+            {
+                "question": "A patient has a corneal abrasion, what specialty are they going to?",
+                "answer": "an ophthalmologist"
+            },
+            {
+                "question": "The site of a wound and any of its bandages are considered what link in the chain of infection?",
+                "answer": "mode of transmission"
+            },
+            {
+                "question": "A pounding/racing heart is called what?",
+                "answer": "palpitations"
+            },
+            {
+                "question": "What can not be handled by the MA?",
+                "answer": "a patient requesting of emergency medical advice"
+            },
+            {
+                "question": "Issues relating to medical advances come under the heading of what?",
+                "answer": "bioethics"
+            },
+            {
+                "question": "A female comes in with vaginal bleeding, what instrument is used to open the walls of the vagina?",
+                "answer": "a speculum"
+            },
+            {
+                "question": "How do you know if you have achieved adequate ventilation while doing CPR?",
+                "answer": "if their chest rises"
+            },
+            {
+                "question": "The patient indicated a urine sample at 18:00, what time is that?",
+                "answer": "6pm"
+            },
+            {
+                "question": "How many thoracic vertebrae are there?",
+                "answer": "12"
+            },
+            {
+                "question": "Second number on a check?",
+                "answer": "routing number"
+            },
+            {
+                "question": "What condition can cause mortality in children?",
+                "answer": "meningitis"
+            },
+            {
+                "question": "Remember the phrase - accounts aging receivable ratio",
+                "answer": "Remember the phrase - accounts aging receivable ratio"
+            }
+        ]
+            ;
+        let currentCard = localStorage.getItem('flashcardIndex') ? parseInt(localStorage.getItem('flashcardIndex')) : 0;
+
+        function updateCard() {
+            document.getElementById('question').textContent = `${currentCard+1}: ${flashcards[currentCard].question}`;
+            document.getElementById('answer').textContent = flashcards[currentCard].answer;
+            document.getElementById('answer').style.display = 'none';
+        }
+
+        function showAnswer() {
+            document.getElementById('answer').style.display = 'block';
+        }
+
+        function nextCard() {
+            currentCard = (currentCard + 1) % flashcards.length;
+            updateCard();
+            saveIndexToLocalStorage();
+        }
+
+        function prevCard() {
+            currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
+            updateCard();
+            saveIndexToLocalStorage();
+        }
+
+        function skipTo() {
+            const skipIndex = parseInt(document.getElementById('skipIndex').value) - 1;
+            if (skipIndex >= 0 && skipIndex < flashcards.length) {
+                currentCard = skipIndex;
+                updateCard();
+                saveIndexToLocalStorage();
+            } else {
+                alert("Invalid index. Please enter a valid index.");
+            }
+        }
+
+        function saveIndexToLocalStorage() {
+            localStorage.setItem('flashcardIndex', currentCard);
+        }
+
+        // Initial load
+        updateCard();
+    </script>
+
+</body>
+
+</html>

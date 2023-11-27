@@ -141,8 +141,7 @@ function resetGame() {
     cells.forEach((cell, index) => {
         cell.textContent = randomNums[index];
         cell.dataset.value = randomNums[index];
-        cell.classList.remove('selected');
-        cell.classList.remove('fifteen');
+        cell.classList.remove('selected', 'fifteen');
         selectedCells = [];
     });
 
