@@ -3,141 +3,165 @@ const DISCORD_WEBHOOK_URL = 'https://discord.com/api/webhooks/144977274602743822
 
 // Menu Data - Easy to edit later
 const menuItems = [
-    // Food Items
+    // Petites Assiettes
     {
         id: 1,
-        name: "Buffalo Wings",
-        description: "Spicy chicken wings with blue cheese dip",
-        price: 12.99,
-        category: "food",
-        icon: "🍗"
-    },
-    {
-        id: 2,
-        name: "Loaded Nachos",
-        description: "Tortilla chips with cheese, jalapeños, and sour cream",
-        price: 10.99,
-        category: "food",
+        name: "Tacos à la Yaakov",
+        description: "Crispy fried corn tortillas cradling tender slow-cooked pulled beef with silky mayonnaise.",
+        category: "petites-assiettes",
         icon: "🌮"
     },
     {
+        id: 2,
+        name: "Poulet Blossom",
+        description: "Delicately breaded chicken nuggets accompanied by a trio of refined sauces: piquant spicy mayonnaise, aromatic garlic mayonnaise, and bold buffalo chicken emulsion.",
+        category: "petites-assiettes",
+        icon: "🍗"
+    },
+    {
         id: 3,
-        name: "BBQ Sliders",
-        description: "Mini pulled pork sliders with coleslaw",
-        price: 14.99,
-        category: "food",
-        icon: "🍔"
+        name: "Latke du Reb Yitzchok Yosef",
+        description: "A geshmaka golden-crisp potato latke crowned with succulent strands of slow-cooked pulled beef.",
+        category: "petites-assiettes",
+        icon: "🥔"
     },
     {
         id: 4,
-        name: "Cheese Pizza",
-        description: "Classic margherita pizza with fresh mozzarella",
-        price: 16.99,
-        category: "food",
-        icon: "🍕"
+        name: "Cigares de Bœuf BBQ",
+        description: "Savory cigars of barbecue-spiced beef, hand-rolled in delicate pastry and served with creamy chickpea hummus.",
+        category: "petites-assiettes",
+        icon: "🥟"
     },
+    // Salades
     {
         id: 5,
-        name: "Chicken Tenders",
-        description: "Crispy fried chicken tenders with honey mustard",
-        price: 11.99,
-        category: "food",
-        icon: "🍖"
+        name: "Salade Deli Shalom",
+        description: "Thinly sliced turkey breast and pastrami nestled atop crisp romaine lettuce, finished with a classic Caesar dressing.",
+        category: "salades",
+        icon: "🥗"
     },
     {
         id: 6,
-        name: "Caesar Salad",
-        description: "Fresh romaine with parmesan and croutons",
-        price: 9.99,
-        category: "food",
+        name: "Salade de Poulet Grillé",
+        description: "Tender grilled chicken atop your choice of crisp romaine lettuce or vibrant spring mix, accompanied by a light vinaigrette.",
+        category: "salades",
         icon: "🥗"
     },
     {
         id: 7,
-        name: "Chocolate Brownie",
-        description: "Warm fudge brownie with vanilla ice cream",
-        price: 7.99,
-        category: "food",
-        icon: "🍫"
+        name: "Salade TLD",
+        description: "A refreshing composition of crisp cucumbers, ripe tomatoes, red onion, and fresh herbs over lively spring mix.",
+        category: "salades",
+        icon: "🥗"
     },
+    // La Soupe du Soir
     {
         id: 8,
-        name: "Cheesecake",
-        description: "New York style cheesecake with berry topping",
-        price: 8.99,
-        category: "food",
-        icon: "🍰"
+        name: "Soupe au Poulet Traditionnelle",
+        description: "Classic golden chicken soup with tender carrots and lokshen noodles, simmered to comforting perfection.",
+        category: "soupe",
+        icon: "🍲"
     },
-    // Drink Items
     {
         id: 9,
-        name: "Coca Cola",
-        description: "Classic cola",
-        price: 2.99,
-        category: "drinks",
-        icon: "🥤"
+        name: "Soupe aux Légumes Râpés",
+        description: "A light, nourishing blend of finely shredded seasonal vegetables in a delicate clear broth, vibrant and wholesome.",
+        category: "soupe",
+        icon: "🍲"
     },
+    // Plats Principaux
     {
         id: 10,
-        name: "Orange Juice",
-        description: "Fresh squeezed orange juice",
-        price: 3.99,
-        category: "drinks",
-        icon: "🧃"
+        name: "Steak de Hampe",
+        description: "Succulent skirt steak marinated in a harmonious blend of parsley, oregano, garlic, chili flakes, smoked paprika, cumin, salt, and pepper, bound with olive oil and grilled to tender perfection. Served with your choice of two accompaniments.",
+        category: "plats-principaux",
+        icon: "🥩"
     },
     {
         id: 11,
-        name: "Beer",
-        description: "Ice cold draft beer",
-        price: 5.99,
-        category: "drinks",
-        icon: "🍺"
+        name: "Entrecôte",
+        description: "Robust boneless rib steak seasoned with a savory rub of kosher salt, smoked paprika, garlic powder, black pepper, brown sugar, and a hint of cayenne, seared to achieve a caramelized crust and juicy interior. Served with your choice of two accompaniments.",
+        category: "plats-principaux",
+        icon: "🥩"
     },
     {
         id: 12,
-        name: "Wine",
-        description: "House red or white wine",
-        price: 8.99,
-        category: "drinks",
-        icon: "🍷"
+        name: "Burger sur Petit Pain",
+        description: "A hearty beef burger nestled in a soft roll, grilled to savory excellence with your choice of classic toppings for an indulgent, comforting delight. Served with your choice of two accompaniments.",
+        category: "plats-principaux",
+        icon: "🍔"
     },
+    // Accompagnements
     {
         id: 13,
-        name: "Mojito",
-        description: "Fresh mint mojito with lime",
-        price: 7.99,
-        category: "drinks",
-        icon: "🍹"
+        name: "Frites Steak",
+        description: "Crisply golden steak-cut fries, perfectly seasoned for a satisfying crunch.",
+        category: "accompagnements",
+        icon: "🍟"
     },
     {
         id: 14,
-        name: "Water",
-        description: "Bottled water",
-        price: 1.99,
-        category: "drinks",
-        icon: "💧"
+        name: "Anneaux d'Oignon",
+        description: "Lightly battered and fried sweet onion rings, achieving a delicate crisp exterior and tender center.",
+        category: "accompagnements",
+        icon: "🧅"
     },
     {
         id: 15,
-        name: "Iced Tea",
-        description: "Sweet or unsweetened iced tea",
-        price: 2.99,
-        category: "drinks",
-        icon: "🧊"
+        name: "Haricots Verts Marinés de Moshe",
+        description: "Fresh string beans marinated in a vibrant herb-infused vinaigrette—Moshe's signature preparation—offering bright flavor and crisp texture.",
+        category: "accompagnements",
+        icon: "🫛"
     },
     {
         id: 16,
-        name: "Coffee",
-        description: "Hot coffee or espresso",
-        price: 3.99,
-        category: "drinks",
-        icon: "☕"
+        name: "Chou-Fleur Rôti",
+        description: "Tender cauliflower florets roasted to caramelized perfection with olive oil and subtle seasoning.",
+        category: "accompagnements",
+        icon: "🥦"
+    },
+    // Pour les Petits
+    {
+        id: 17,
+        name: "Poulet en Os à la Chani",
+        description: "Crispy, juicy chicken on the bone, perfectly seasoned for little hands and big appetites. Served with fries and a special toy.",
+        category: "pour-les-petits",
+        icon: "🍗"
+    },
+    {
+        id: 18,
+        name: "Nuggets de Poulet",
+        description: "Golden, tender chicken nuggets accompanied by a selection of dipping sauces, crafted for young gourmands. Served with fries and a special toy.",
+        category: "pour-les-petits",
+        icon: "🍗"
+    },
+    // Les Desserts
+    {
+        id: 19,
+        name: "Beignets de Hanoucca",
+        description: "Warm, golden Chanukah donuts freshly fried and dusted with powdered sugar, filled with seasonal preserves or classic jelly.",
+        category: "desserts",
+        icon: "🍩"
+    },
+    {
+        id: 20,
+        name: "Glace Vanille Maison aux Cookies – Signature de Dina",
+        description: "Silky homemade vanilla ice cream generously swirled with crushed chocolate cookies for a timeless cookies-and-cream indulgence.",
+        category: "desserts",
+        icon: "🍨"
+    },
+    {
+        id: 21,
+        name: "Salade de Fruits Fraîche",
+        description: "A vibrant medley of seasonal fresh fruits, artfully composed for a light and refreshing finale.",
+        category: "desserts",
+        icon: "🍇"
     }
 ];
 
 // Cart state
 let cart = [];
-let currentCategory = 'all';
+let currentCategory = 'petites-assiettes';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -190,9 +214,7 @@ function setupEventListeners() {
 // Render menu items
 function renderMenu() {
     const menuGrid = document.getElementById('menuGrid');
-    const filteredItems = currentCategory === 'all'
-        ? menuItems
-        : menuItems.filter(item => item.category === currentCategory);
+    const filteredItems = menuItems.filter(item => item.category === currentCategory);
 
     menuGrid.innerHTML = filteredItems.map(item => `
         <div class="menu-item">
@@ -398,9 +420,9 @@ function startNewOrder() {
     saveCartToStorage();
     updateCartDisplay();
     closeSuccessModal();
-    currentCategory = 'all';
+    currentCategory = 'petites-assiettes';
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('[data-category="all"]').classList.add('active');
+    document.querySelector('[data-category="petites-assiettes"]').classList.add('active');
     renderMenu();
 
     // Reset success message

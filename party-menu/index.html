@@ -4,23 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Menu - Order Now!</title>
+    <title>Entre Amis - Order Now!</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container">
         <header>
-            <h1>🎉 Party Menu 🎉</h1>
+            <h1>Entre Amis</h1>
             <p class="subtitle">Order your favorites for the party!</p>
         </header>
 
         <div class="main-content">
             <div class="menu-section">
                 <div class="category-tabs">
-                    <button class="tab-btn active" data-category="all">All Items</button>
-                    <button class="tab-btn" data-category="food">Food</button>
-                    <button class="tab-btn" data-category="drinks">Drinks</button>
+                    <button class="tab-btn active" data-category="petites-assiettes">Petites Assiettes</button>
+                    <button class="tab-btn" data-category="salades">Salades</button>
+                    <button class="tab-btn" data-category="soupe">La Soupe du Soir</button>
+                    <button class="tab-btn" data-category="plats-principaux">Plats Principaux</button>
+                    <button class="tab-btn" data-category="accompagnements">Accompagnements</button>
+                    <button class="tab-btn" data-category="pour-les-petits">Pour les Petits</button>
+                    <button class="tab-btn" data-category="desserts">Les Desserts</button>
                 </div>
 
                 <div class="menu-grid" id="menuGrid">
@@ -79,7 +83,8 @@
         <div class="modal-content">
             <div class="success-content">
                 <h2>✅ Order Submitted!</h2>
-                <p id="successMessage">Please note: CardKnox is having trouble processing your payment. Please contact Moshe Stein <a href="tel:18483738051">848-373-8051</a></p>
+                <p id="successMessage">Please note: CardKnox is having trouble processing your payment. Please contact
+                    Moshe Stein <a href="tel:18483738051">848-373-8051</a></p>
                 <!-- <p id="successMessage">Your order has been sent to Discord!</p> -->
                 <button class="btn-primary" id="newOrderBtn">Place New Order</button>
             </div>
