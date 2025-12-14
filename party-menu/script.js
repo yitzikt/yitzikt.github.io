@@ -196,11 +196,9 @@ function renderMenu() {
 
     menuGrid.innerHTML = filteredItems.map(item => `
         <div class="menu-item">
-            <div class="menu-item-icon">${item.icon}</div>
             <div class="menu-item-name">${item.name}</div>
             <div class="menu-item-description">${item.description}</div>
             <div class="menu-item-footer">
-                <span class="menu-item-price">$${item.price.toFixed(2)}</span>
                 <button class="add-to-cart-btn" onclick="addToCart(${item.id})">
                     Add to Cart
                 </button>
@@ -263,14 +261,11 @@ function updateQuantity(itemId, change) {
 function updateCartDisplay() {
     const cartItems = document.getElementById('cartItems');
     const floatingCartCount = document.getElementById('floatingCartCount');
-    const cartTotal = document.getElementById('cartTotal');
     const checkoutBtn = document.getElementById('checkoutBtn');
 
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     floatingCartCount.textContent = count;
-    cartTotal.textContent = total.toFixed(2);
     checkoutBtn.disabled = cart.length === 0;
 
     // Hide badge if cart is empty
@@ -287,7 +282,6 @@ function updateCartDisplay() {
             <div class="cart-item">
                 <div class="cart-item-info">
                     <div class="cart-item-name">${item.icon} ${item.name}</div>
-                    <div class="cart-item-price">$${item.price.toFixed(2)} each</div>
                 </div>
                 <div class="cart-item-controls">
                     <div class="quantity-control">
@@ -310,18 +304,10 @@ function openOrderModal() {
     const summaryHTML = cart.map(item => `
         <div class="summary-item">
             <span>${item.icon} ${item.name} x${item.quantity}</span>
-            <span>$${(item.price * item.quantity).toFixed(2)}</span>
         </div>
     `).join('');
 
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-    orderSummary.innerHTML = summaryHTML + `
-        <div class="summary-total">
-            <span>Total:</span>
-            <span>$${total.toFixed(2)}</span>
-        </div>
-    `;
+    orderSummary.innerHTML = summaryHTML;
 
     document.getElementById('orderModal').style.display = 'block';
     document.getElementById('customerName').focus();
@@ -390,17 +376,14 @@ async function handleOrderSubmit(e) {
 }
 
 function formatOrderForDiscord(customerName) {
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
     let text = `🎉 **NEW ORDER** 🎉\n\n`;
     text += `**Name:** ${customerName}\n\n`;
     text += `**Items:**\n`;
 
     cart.forEach(item => {
-        text += `${item.icon} ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+        text += `${item.icon} ${item.name} x${item.quantity}\n`;
     });
 
-    text += `\n**Total: $${total.toFixed(2)}**\n`;
     text += `\n---\n`;
 
     return text;
