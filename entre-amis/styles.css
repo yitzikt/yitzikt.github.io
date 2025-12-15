@@ -214,9 +214,9 @@ header h1 {
 }
 
 .add-to-cart-btn:hover {
-    background: #ffd93d;
+    background: #9d7a4f;
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(255, 230, 109, 0.4);
+    box-shadow: 0 4px 12px rgba(157, 122, 79, 0.4);
 }
 
 .add-to-cart-btn:active {
