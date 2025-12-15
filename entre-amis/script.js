@@ -72,21 +72,21 @@ const menuItems = [
     // Plats Principaux
     {
         id: 10,
-        name: "Steak de Hampe",
+        name: "Steak de Hampe*",
         description: "Succulent skirt steak marinated in a harmonious blend of parsley, oregano, garlic, chili flakes, smoked paprika, cumin, salt, and pepper, bound with olive oil and grilled to tender perfection. Served with your choice of two accompaniments.",
         category: "plats-principaux",
         icon: "🥩"
     },
     {
         id: 11,
-        name: "Entrecôte",
+        name: "Entrecôte*",
         description: "Robust boneless rib steak seasoned with a savory rub of kosher salt, smoked paprika, garlic powder, black pepper, brown sugar, and a hint of cayenne, seared to achieve a caramelized crust and juicy interior. Served with your choice of two accompaniments.",
         category: "plats-principaux",
         icon: "🥩"
     },
     {
         id: 12,
-        name: "Burger sur Petit Pain",
+        name: "Burger sur Petit Pain*",
         description: "A hearty beef burger nestled in a soft roll, grilled to savory excellence with your choice of classic toppings for an indulgent, comforting delight. Served with your choice of two accompaniments.",
         category: "plats-principaux",
         icon: "🍔"
@@ -214,6 +214,7 @@ function setupEventListeners() {
 // Render menu items
 function renderMenu() {
     const menuGrid = document.getElementById('menuGrid');
+    const menuDisclaimer = document.getElementById('menuDisclaimer');
     const filteredItems = menuItems.filter(item => item.category === currentCategory);
 
     menuGrid.innerHTML = filteredItems.map(item => `
@@ -227,6 +228,13 @@ function renderMenu() {
             </div>
         </div>
     `).join('');
+
+    // Show disclaimer only for main dishes category
+    if (currentCategory === 'plats-principaux') {
+        menuDisclaimer.style.display = 'block';
+    } else {
+        menuDisclaimer.style.display = 'none';
+    }
 }
 
 // Cart functions

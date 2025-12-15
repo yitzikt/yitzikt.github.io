@@ -184,6 +184,23 @@ header h1 {
     color: var(--primary-color);
 }
 
+.menu-disclaimer {
+    margin-top: 30px;
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.menu-disclaimer p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    font-style: italic;
+}
+
 .add-to-cart-btn {
     padding: 10px 20px;
     background: var(--accent-color);
