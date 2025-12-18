@@ -16,7 +16,7 @@ const menuItems = [
         name: "Poulet Blossom",
         description: "Delicately breaded chicken nuggets accompanied by a trio of refined sauces: piquant spicy mayonnaise, aromatic garlic mayonnaise, and bold buffalo chicken emulsion.",
         category: "petites-assiettes",
-        image: "images/Kind chicken nuggets.jpg"
+        image: "images/chicken-nuggets.jpg"
     },
     {
         id: 3,
