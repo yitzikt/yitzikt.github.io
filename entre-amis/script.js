@@ -259,15 +259,15 @@ function addToCart(itemId) {
         toggleCart();
     }
 
-    // Visual feedback
-    const btn = event.target;
-    const originalText = btn.textContent;
-    btn.textContent = 'Added!';
-    btn.style.background = '#4ecdc4';
-    setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.background = '';
-    }, 1000);
+    // // Visual feedback
+    // const btn = event.target;
+    // const originalText = btn.textContent;
+    // btn.textContent = 'Added!';
+    // btn.style.background = '#4ecdc4';
+    // setTimeout(() => {
+    //     btn.textContent = originalText;
+    //     btn.style.background = '';
+    // }, 1000);
 }
 
 function removeFromCart(itemId) {
