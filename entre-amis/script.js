@@ -14,7 +14,7 @@ const menuItems = [
     {
         id: 2,
         name: "Poulet Blossom",
-        description: "Delicately breaded chicken nuggets accompanied by a trio of refined sauces: piquant spicy mayonnaise, aromatic garlic mayonnaise, and bold buffalo chicken emulsion.",
+        description: "Crispy breaded chicken lollipops, shaped for easy enjoyment and fried to golden perfection, served with a trio of sauces: piquant spicy mayonnaise, aromatic garlic mayonnaise, and bold buffalo chicken emulsion.",
         category: "petites-assiettes",
         image: "images/chicken-nuggets.jpg"
     },
@@ -25,13 +25,13 @@ const menuItems = [
         category: "petites-assiettes",
         image: "images/Latke with pulled beef.jpg"
     },
-    {
-        id: 4,
-        name: "Cigares de Bœuf BBQ",
-        description: "Savory cigars of barbecue-spiced beef, hand-rolled in delicate pastry and served with creamy chickpea hummus.",
-        category: "petites-assiettes",
-        image: "images/cigars.jpg"
-    },
+    // {
+    //     id: 4,
+    //     name: "Cigares de Bœuf BBQ",
+    //     description: "Savory cigars of barbecue-spiced beef, hand-rolled in delicate pastry and served with creamy chickpea hummus.",
+    //     category: "petites-assiettes",
+    //     image: "images/cigars.jpg"
+    // },
     // Salades
     {
         id: 5,
@@ -113,13 +113,13 @@ const menuItems = [
         category: "accompagnements",
         image: "images/green beans.jpg"
     },
-    {
-        id: 16,
-        name: "Chou-Fleur Rôti",
-        description: "Tender cauliflower florets roasted to caramelized perfection with olive oil and subtle seasoning.",
-        category: "accompagnements",
-        image: "images/cauliflower.jpg"
-    },
+    // {
+    //     id: 16,
+    //     name: "Chou-Fleur Rôti",
+    //     description: "Tender cauliflower florets roasted to caramelized perfection with olive oil and subtle seasoning.",
+    //     category: "accompagnements",
+    //     image: "images/cauliflower.jpg"
+    // },
     // Pour les Petits
     {
         id: 17,
@@ -156,6 +156,73 @@ const menuItems = [
         description: "A vibrant medley of seasonal fresh fruits, artfully composed for a light and refreshing finale.",
         category: "desserts",
         image: "images/fruit salad.jpg"
+    },
+    // Appetizers
+    {
+        id: 22,
+        name: "Kielbasa en Croûte",
+        description: "Succulent Polish sausage enveloped in flaky golden pastry, baked to crisp perfection and served with a zesty mustard sauce.",
+        category: "petites-assiettes",
+        image: ""
+    },
+    {
+        id: 23,
+        name: "Sandwich au Pastrami Croustillant",
+        description: "Tender, juicy hot pastrami piled high and coated in a crisp cornflake crust, grilled to golden perfection and nestled in fresh bread, drizzled with our house spicy mustard sauce for a delightful crunch and bold flavor in every bite.",
+        category: "petites-assiettes",
+        image: ""
+    },
+    // Main dish
+    {
+        id: 24,
+        name: "Côtelettes de Veau Grillées",
+        description: "Succulent veal chops grilled to perfection with a herb-infused marinade, offering tender, juicy bites that celebrate classic French elegance with a festive touch.",
+        category: "plats-principaux",
+        image: ""
+    },
+    // Sides
+    {
+        id: 25,
+        name: "Légumes Grillés",
+        description: "A medley of seasonal vegetables grilled to charred perfection, drizzled with olive oil and fresh herbs for a smoky, vibrant side dish bursting with natural flavors.",
+        category: "accompagnements",
+        image: ""
+    },
+    {
+        id: 26,
+        name: "Carottes Arc-en-Ciel Rôties",
+        description: "Vibrant rainbow carrots roasted to caramelized tenderness with a hint of thyme, showcasing their natural colors and earthy sweetness.",
+        category: "accompagnements",
+        image: ""
+    },
+    // Drinks
+    {
+        id: 27,
+        name: "Créez Votre Propre Cocktail",
+        description: "Unleash your creativity at the bar! Choose from a refined selection of premium spirits, artisanal liqueurs, fresh juices, house-made syrups, and elegant garnishes to craft the cocktail of your dreams.",
+        category: "boissons",
+        image: ""
+    },
+    {
+        id: 28,
+        name: "Eau Plate ou Gazeuse",
+        description: "Pure still or sparkling water, served chilled and refreshed with a twist of lemon or lime upon request, the perfect crisp accompaniment to your festive evening.",
+        category: "boissons",
+        image: ""
+    },
+    {
+        id: 29,
+        name: "Notre Sélection de Bières",
+        description: "Ask about our extensive collection of beers, featuring crisp lagers, hop-forward IPAs, and a variety of domestic favorites, perfectly chilled to complement your evening.",
+        category: "boissons",
+        image: ""
+    },
+    {
+        id: 30,
+        name: "Sélection de Vins",
+        description: "Discover our curated collection of fine wines, featuring elegant French reds and whites, robust Israeli selections, and sparkling options to perfectly pair with your festive evening. Ask your server for tonight's recommendations.",
+        category: "boissons",
+        image: ""
     }
 ];
 
