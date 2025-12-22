@@ -207,7 +207,7 @@ const menuItems = [
         name: "Bouchées de Brocoli Façon Kugel",
         description: "Delightful individual broccoli kugels baked to golden perfection in muffin form, offering a savory blend of tender broccoli, onions, and eggs with a crisp exterior and fluffy center – a charming, bite-sized twist on a beloved classic.",
         category: "accompagnements",
-        image: "images/coming-soon.jpg"
+        image: "images/chicken-cutlets.jpg"
     },
     // Drinks
     {
