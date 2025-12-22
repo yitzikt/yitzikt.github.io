@@ -85,6 +85,20 @@ const menuItems = [
         image: "images/rib steak.jpg"
     },
     {
+        id: 24,
+        name: "Côtelettes de Veau Grillées*",
+        description: "Succulent veal chops grilled to perfection with a herb-infused marinade, offering tender, juicy bites that celebrate classic French elegance with a festive touch.",
+        category: "plats-principaux",
+        image: "images/veal-chops.jpg"
+    },
+    {
+        id: 33,
+        name: "Escalope de Poulet Panée*",
+        description: "Tender chicken cutlets pounded thin, lightly breaded with golden crumbs, and fried to crisp perfection.",
+        category: "plats-principaux",
+        image: "images/chicken-cutlets.png"
+    },
+    {
         id: 12,
         name: "Burger sur Petit Pain*",
         description: "A hearty beef burger nestled in a soft roll, grilled to savory excellence with your choice of classic toppings for an indulgent, comforting delight. Served with your choice of two accompaniments.",
@@ -171,21 +185,6 @@ const menuItems = [
         description: "Tender, juicy hot pastrami piled high and coated in a crisp cornflake crust, grilled to golden perfection and nestled in fresh bread, drizzled with our house spicy mustard sauce for a delightful crunch and bold flavor in every bite.",
         category: "petites-assiettes",
         image: "images/coming-soon.jpg"
-    },
-    // Main dish
-    {
-        id: 24,
-        name: "Côtelettes de Veau Grillées",
-        description: "Succulent veal chops grilled to perfection with a herb-infused marinade, offering tender, juicy bites that celebrate classic French elegance with a festive touch.",
-        category: "plats-principaux",
-        image: "images/veal-chops.jpg"
-    },
-    {
-        id: 25,
-        name: "Escalope de Poulet Panée",
-        description: "Tender chicken cutlets pounded thin, lightly breaded with golden crumbs, and fried to crisp perfection.",
-        category: "plats-principaux",
-        image: "images/chicken-cutlets.jpg"
     },
     // Sides
     {
