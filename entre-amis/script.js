@@ -16,7 +16,7 @@ const menuItems = [
         name: "Poulet Blossom",
         description: "Crispy breaded chicken lollipops, shaped for easy enjoyment and fried to golden perfection, served with a trio of sauces: piquant spicy mayonnaise, aromatic garlic mayonnaise, and bold buffalo chicken emulsion.",
         category: "petites-assiettes",
-        image: "images/chicken-nuggets.jpg"
+        image: "images/blossom-chicken.jpg"
     },
     {
         id: 3,
